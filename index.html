@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOA Racing - Servicio Técnico Especializado</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header con el Logo de LOA Racing -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="LOA Racing Logo" class="header-logo">
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/loaracing?stkn=MXV5M282cmNsMG84eg==" target="_blank" class="social-btn">📷 Instagram</a>
+        </div>
+    </header>
+
+    <!-- Navegación Pública -->
+    <nav>
+        <button class="nav-btn active" onclick="switchTab('inicio')">🏠 Inicio y Turnos</button>
+        <button class="nav-btn" onclick="switchTab('galeria')">🖼️ Trabajos Realizados</button>
+        <button class="nav-btn" onclick="switchTab('info')">ℹ️ Info y Pagos</button>
+    </nav>
+
+    <main>
+        <!-- SECCIÓN 1: INICIO Y SISTEMA DE TURNOS -->
+        <section id="inicio" class="tab-content active">
+            <div class="card text-center hero-section">
+                <h2 class="hero-title">Tu moto en las mejores manos</h2>
+                <p class="hero-subtitle">Servicio técnico integral, mantenimiento y potenciación. Trabajamos con los mejores estándares de calidad para que tu vehículo rinda al máximo.</p>
+                
+                <div class="turnos-box" id="caja-reservas">
+                    <h3>🗓️ Reserva tu turno de ingreso</h3>
+                    <p>Completá los datos y te contactaremos para confirmar disponibilidad.</p>
+                    
+                    <!-- FORMULARIO DE TURNOS -->
+                    <form onsubmit="pedirTurno(event)" style="text-align: left;">
+                        <input type="text" id="t-cliente" placeholder="Tu Nombre Completo" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 6px; background:#1b2230; color:white; border:1px solid #26334d;">
+                        <input type="tel" id="t-tel" placeholder="Teléfono de Contacto" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 6px; background:#1b2230; color:white; border:1px solid #26334d;">
+                        <input type="text" id="t-vehiculo" placeholder="Marca, Modelo y Año de la Moto" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 6px; background:#1b2230; color:white; border:1px solid #26334d;">
+                        <input type="date" id="t-fecha" required style="width: 100%; margin-bottom: 10px; padding: 10px; border-radius: 6px; background:#1b2230; color:white; border:1px solid #26334d;">
+                        <div style="display: flex; gap: 4%; margin-bottom: 10px;">
+                            <input type="number" id="t-dni" placeholder="DNI" required style="width: 48%; padding: 10px; border-radius: 6px; background:#1b2230; color:white; border:1px solid #26334d;">
+                            <input type="text" id="t-patente" placeholder="Patente de la moto" required style="width: 48%; padding: 10px; border-radius: 6px; background:#1b2230; color:white; border:1px solid #26334d;">
+                        </div>
+                        <textarea id="t-motivo" placeholder="¿Qué le pasa a la moto? (Service, ruido en motor, etc.)" rows="3" required style="width: 100%; margin-bottom: 15px; padding: 10px; border-radius: 6px; background:#1b2230; color:white; border:1px solid #26334d;"></textarea>
+                        
+                        <button type="submit" class="btn-submit" id="btnPedirTurno">Solicitar Turno</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: GALERÍA DE TRABAJOS (VIDRIERA) -->
+        <section id="galeria" class="tab-content">
+            <div class="card">
+                <h2 class="card-title justify-center">🖼️ Galería de Trabajos</h2>
+                <p class="text-center" style="color: var(--text-muted); margin-bottom: 2rem;">Un vistazo a los proyectos que pasan por nuestro taller.</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-card">
+                        <div class="gallery-img">🏍️ [Foto del Trabajo]</div>
+                        <div class="gallery-info">
+                            <div class="gallery-title">Honda XR 250 - Restauración</div>
+                            <div class="gallery-desc">Ajuste completo de motor, pintura de cuadro y service de suspensión.</div>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <div class="gallery-img">🏍️ [Foto del Trabajo]</div>
+                        <div class="gallery-info">
+                            <div class="gallery-title">Yamaha FZ - Service General</div>
+                            <div class="gallery-desc">Cambio de transmisión, frenos, fluidos y revisión eléctrica.</div>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <div class="gallery-img">🏍️ [Foto del Trabajo]</div>
+                        <div class="gallery-info">
+                            <div class="gallery-title">Rouser NS 200 - Puesta a punto</div>
+                            <div class="gallery-desc">Carburación, afinación completa y cambio de cubiertas.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- SECCIÓN 3: INFO Y PAGOS -->
+        <section id="info" class="tab-content">
+            <div class="card">
+                <h2 class="card-title justify-center">📍 Información Útil</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-around; margin-top: 2rem;">
+                    <div style="flex: 1; min-width: 250px; background: rgba(0, 81, 255, 0.05); padding: 20px; border-radius: 10px; border: 1px solid var(--border-color);">
+                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">💳 Medios de Pago</h3>
+                        <ul style="list-style: none; color: var(--text-muted); line-height: 1.8;">
+                            <li>✔️ Efectivo</li>
+                            <li>✔️ Mercado Pago y Personal Pay</li>
+                            <li>✔️ Transferencias (Banco Galicia, BBVA, etc.)</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1; min-width: 250px; background: rgba(0, 81, 255, 0.05); padding: 20px; border-radius: 10px; border: 1px solid var(--border-color);">
+                        <h3 style="color: var(--primary-blue); margin-bottom: 15px;">🗺️ Ubicación y Horarios</h3>
+                        <p style="color: var(--text-muted); line-height: 1.8;">
+                            📍 <strong>Zona:</strong> Villa Devoto, Capital Federal<br>
+                            <span style="font-size: 0.85rem;">(Te enviamos la dirección exacta al confirmar el turno)</span><br><br>
+                            🕒 <strong>Lunes a Viernes:</strong> A confirmar.<br>
+                            🕒 <strong>Sábados:</strong> 09:00 a 17:00 hs
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 LOA Racing. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+    <a href="https://wa.me/5491156135255?text=Hola!%20Tengo%20una%20consulta%20sobre%20el%20taller." target="_blank" class="wsp-flotante">
+    💬 WhatsApp
+    </a>
+</body>
+</html>
