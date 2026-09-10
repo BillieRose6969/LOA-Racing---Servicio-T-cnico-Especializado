@@ -313,3 +313,20 @@ footer {
 .wsp-flotante:hover {
     transform: scale(1.05);
 }
+
+@media (max-width: 768px) {
+    header {
+        padding: 5px 15px; /* Achica los márgenes laterales en celu */
+        height: auto; /* Anula la altura fija para que no desborde nada invisible */
+        min-height: 70px; /* Mantiene el tamaño mínimo elegante */
+    }
+    
+    .header-logo {
+        height: 50px; /* Achica un pelín el logo solo en celu para que no choque con el botón de Instagram */
+    }
+    
+    nav {
+        position: relative;
+        z-index: 90; /* Trae los botones al frente para que sean 100% clickeables, pero sin tapar el encabezado al hacer scroll */
+    }
+}
