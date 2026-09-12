@@ -69,11 +69,9 @@ async function cargarGaleria() {
                 
                 let htmlFotos = `<div style="display: flex; overflow-x: auto; gap: 10px; padding-bottom: 10px; scroll-snap-type: x mandatory;">`;
                 fotos.forEach(url => {
-                    // TRUCO DEFINITIVO: Usamos el visor de miniaturas de Google Drive
                     let urlDirecta = url;
                     const match = url.match(/\/d\/(.+?)\//);
                     if(match && match[1]) {
-                        // sz=w1000 le pide a Google que nos dé la imagen visible y de buena calidad
                         urlDirecta = `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`;
                     }
                     
@@ -86,9 +84,11 @@ async function cargarGaleria() {
                 tarjeta.innerHTML = `
                     ${htmlFotos}
                     <div class="gallery-info" style="padding: 15px;">
-                        <div class="gallery-title" style="font-weight: bold;">${fila[2]} (Patente: ${fila[1]})</div>
+                        <!-- ACÁ SE HIZO EL CAMBIO: Imprime fila[9] que es el vehículo -->
+                        <div class="gallery-title" style="font-weight: bold;">${fila[9] || 'Vehículo sin registrar'}</div>
                         <div class="gallery-desc" style="font-size: 0.9rem; color: #a1a1aa; margin-top:5px;">${fila[5]}</div>
-                        <div style="font-size: 0.8rem; color: #4ade80; margin-top:5px;">${fotos.length} foto(s) del antes y después</div>
+                        <!-- ACÁ EL CAMBIO DE TEXTO VERDE -->
+                        <div style="font-size: 0.8rem; color: #4ade80; margin-top:5px;">${fotos.length} fotos del trabajo realizado</div>
                     </div>
                 `;
                 contenedor.appendChild(tarjeta);
